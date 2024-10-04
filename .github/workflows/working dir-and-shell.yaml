@@ -1,24 +1,39 @@
 name: Working Dirs and Shells
 on: [push]
+defaults:
+    run:
+        shell: bash
 jobs:
     display-wd-info:
         runs-on: ubuntu-latest
         steps:
-           - name: Dilplay working Directory & list Fles
-             run: |
-              pwd
-              ls -la
-              echo $GITHUB_SHA
-              echo $GITHUB_REPOSITORY
-              echo $GITHUB_WORKSPACE
+            - name: Dilplay working Directory & list Fles
+              run: |
+                    pwd
+                    ls -la
+                    echo $GITHUB_SHA
+                    echo $GITHUB_REPOSITORY
+                    echo $GITHUB_WORKSPACE
+            
+            - name: Change Working Dir
+              working-directory: /home/runner
+              run: pwd
+                
     display-wd-info-windows:
         runs-on: windows-latest
+        defaults:
+            run:
+                shell: pwsh
         steps:
             - name: Dilplay working Directory & list Fles
               run: |
-                pwd
-                ls -la
+                Get-locaion
+                dir
                 echo $GITHUB_SHA
                 echo $GITHUB_REPOSITORY
                 echo $GITHUB_WORKSPACE
-                
+            - name: Python shell
+              shell: python
+              run: |
+               import platform
+               print(platform.processor())
