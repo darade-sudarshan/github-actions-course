@@ -27,7 +27,7 @@ jobs:
         steps:
             - name: Dilplay working Directory & list Fles
               run: |
-                Get-locaion
+                Get-location
                 dir
                 echo $GITHUB_SHA
                 echo $GITHUB_REPOSITORY
